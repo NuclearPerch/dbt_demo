@@ -13,7 +13,7 @@ dayname(to_timestamp(started_at)) as day_name,
 {{function1('started_at')}} as past_future
 
 from 
-{{ source('demo', 'bike') }}
+{{ ref('stage_bike') }}
 where started_at != 'started_at'
 )
 

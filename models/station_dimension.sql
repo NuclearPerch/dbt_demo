@@ -1,12 +1,12 @@
 with bike as (
 
     select distinct
-    start_station_id,
-    start_station_name,
-    start_lat,
-    start_lng
+    start_statio_id as station_id,
+    start_station_name as station_name,
+    start_lat as station_lat,
+    start_lng as station_lng
 
-    from {{source('demo', 'bike')}}
+    from {{ ref('stage_bike') }}
 
     where ride_id != 'ride_id' 
 

@@ -1,19 +1,18 @@
 with trips as (
 
-    select distinct
+    select
     ride_id,
-    rideable_type,
+    --rideable_type,
     date(to_timestamp(started_at)) as trip_date,
-    start_station_id as start_station_id,
+    start_statio_id as start_station_id,
     end_station_id,
-    member_casual as member_casual,
+    member_csual as member_casual,
     timestampdiff(second, to_timestamp(started_at), to_timestamp(ended_at)) as trip_duration_seconds
 
-    from {{source('demo', 'bike')}}
+    from {{ref('stage_bike')}}
 
-    where ride_id != 'ride_id' 
+    where ride_id != 'ride_id' and year(date(to_timestamp(started_at))) = 2018
 
-    limit 10
 
 )
 
